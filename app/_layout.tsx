@@ -10,6 +10,9 @@ export default function RootLayout() {
 
   function realizarOperacao() {
 
+    console.log("num1:", num1)
+    console.log("num2:", num2)
+
     const n1 = parseFloat(num1);
     const n2 = parseFloat(num2);
 
@@ -21,9 +24,21 @@ export default function RootLayout() {
       return n1 * n2;
     } else if (operador === '/') {
       return n1 / n2;
+    } else if(operador === 'rq'){
+      return ''
     } else {
-      return null
+      return ''
     }
+  }
+
+  function mostrarResultado(){
+
+      const result = realizarOperacao().toString()
+      console.log(result)
+
+      montarNum1(result)
+      setOperador('')
+      montarNum2('')
   }
 
   function escolherNum(num: string) {
@@ -42,28 +57,68 @@ export default function RootLayout() {
     setNum2(num2 + numero)
   }
 
+  function escolherOperador(op: string) {
+    setOperador(op)
+  }
+
   return (
     <>
       <SafeAreaView>
         <Text>Calculator</Text>
         <Text>{num1} {operador} {num2}</Text>
 
-        <TouchableOpacity onPress={}>
+        <TouchableOpacity onPress={() => escolherNum('0')}>
           <Text>0</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => escolherNum('1')}>
+          <Text>1</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => escolherNum('2')}>
+          <Text>2</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => escolherNum('3')}>
+          <Text>3</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => escolherNum('4')}>
+          <Text>4</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => escolherNum('5')}>
+          <Text>5</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => escolherNum('6')}>
+          <Text>6</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => escolherNum('7')}>
+          <Text>7</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => escolherNum('8')}>
+          <Text>8</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => escolherNum('9')}>
+          <Text>9</Text>
         </TouchableOpacity>
 
 
-        <TouchableOpacity onPress={ }>
-          <Text key={0}>0</Text>
-          <Text key={1}>1</Text>
-          <Text key={2}>2</Text>
-          <Text key={3}>3</Text>
-          <Text key={4}>4</Text>
-          <Text key={5}>5</Text>
-          <Text key={6}>6</Text>
-          <Text key={7}>7</Text>
-          <Text key={8}>8</Text>
-          <Text key={9}>9</Text>
+        <TouchableOpacity onPress={() => escolherNum('+')}>
+          <Text>+</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => escolherNum('-')}>
+          <Text>-</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => escolherNum('*')}>
+          <Text>*</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => escolherNum('/')}>
+          <Text>/</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => escolherNum('rq')}>
+          <Text>rq</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => 
+          mostrarResultado()
+        }>
+          <Text>REALIZAR CONTA</Text>
         </TouchableOpacity>
       </SafeAreaView>
     </>
